@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/HelloWorld.vue';
+import PokemonList from '../components/PokemonList.vue';
 </script>
 
 <template>
   <main>
-    <TheWelcome msg="message for the body" />
+    <PokemonList />
   </main>
 </template>
