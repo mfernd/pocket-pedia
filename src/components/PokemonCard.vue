@@ -1,17 +1,44 @@
 <script setup>
 defineProps({
-  id: Number,
-  name: String,
-  spriteUrl: String,
+  speciesId: {
+    type: Number,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  types: {
+    type: Array,
+    required: true,
+  },
 });
+
+const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/`;
 </script>
 
 <template>
-  <div class="pokemon-card">
-    <img :src="spriteUrl" :alt="name" />
-    <h2>{{ name }}</h2>
-    <span>#{{ id }}</span>
-  </div>
+  <router-link :to="{ name: 'PokemonDetails', params: { id: speciesId } }">
+    <div class="pokemon-card">
+      <img
+        :src="`${artworkUrl}/${speciesId}.png`"
+        :alt="`Sprite du pokémon ${name}`"
+      />
+      <div class="pokemon-info">
+        <p class="pokemon-id">#{{ speciesId }}</p>
+        <h2>{{ name }}</h2>
+        <div class="pills">
+          <span
+            v-for="pokemonType in types"
+            :key="pokemonType"
+            :class="`pill background-color-${pokemonType}`"
+          >
+            {{ pokemonType }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </router-link>
 </template>
 
 <style scoped>
@@ -19,23 +46,32 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-  border: 1px solid rgba(20, 20, 20, 1);
-  border-radius: 5px;
-  min-width: 200px;
+  width: 100%;
+  max-width: 200px;
+}
+
+.pokemon-info {
+  width: 100%;
+}
+
+.pokemon-id {
+  color: #333;
+  font-weight: bold;
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  position: relative;
 }
 
 h2 {
-  margin: 0;
+  margin: 0.2rem 0 7px;
 }
 
-span {
-  color: #333;
-  font-weight: bold;
+p {
+  margin: 0.3rem 0 0.5rem;
+  color: #919191;
 }
 </style>
