@@ -1,4 +1,7 @@
 <script setup>
+import { onMounted, ref } from 'vue';
+import { createStatsChart } from '@/services/radarChart.js';
+
 const pokemon = {
   speciesId: 146, // from csv
   name: 'Sulfura', // from csv
@@ -147,55 +150,69 @@ const pokemon = {
 };
 
 // Pour les évolutions : /evolution-chain/:id
+
+const statsChart = ref();
+
+onMounted(() => {
+  createStatsChart(statsChart.value);
+});
 </script>
 
 <template>
   <img
-    class="pokemon-details-sprite"
+    id="pokemon-details-sprite"
     :src="pokemon.sprite.animated ?? pokemon.sprite.artwork"
     :alt="`Sprite du pokémon ${pokemon.name}`"
   />
   <h1>{{ pokemon.name }} (#{{ pokemon.speciesId }})</h1>
   <h2 v-if="pokemon.isLegendary">Pokémon Légendaire</h2>
   <h2 v-if="pokemon.isMythical">Pokémon Mythique</h2>
-  <section>
+  <section id="pokemon-details-columns">
     <h1>Informations</h1>
     <article>
       <h2>Description :</h2>
       <p>{{ pokemon.description }}</p>
     </article>
+    <div class="card" style="display: inline-block">
+      <article>
+        <h2>Types :</h2>
+        <p class="pills">
+          <span
+            v-for="pokemonType in pokemon.types"
+            :key="pokemonType"
+            :class="`pill background-color-${pokemonType}`"
+          >
+            {{ pokemonType }}
+          </span>
+        </p>
+      </article>
+      <article>
+        <h2>Catégorie : {{ pokemon.category }}</h2>
+      </article>
+      <article>
+        <h2>Taille : {{ pokemon.height }}m</h2>
+        <h2>Poids : {{ pokemon.weight }}kg</h2>
+      </article>
+      <article>
+        <h2>Talent(s) :</h2>
+        <p class="pills">
+          <span
+            v-for="ability in pokemon.abilities.map(
+              (ability) => ability.ability.name
+            )"
+            :key="ability"
+            class="pill"
+          >
+            {{ ability }}
+          </span>
+        </p>
+      </article>
+    </div>
     <article>
-      <h2>Types :</h2>
-      <p class="pills">
-        <span
-          v-for="pokemonType in pokemon.types"
-          :key="pokemonType"
-          :class="`pill background-color-${pokemonType}`"
-        >
-          {{ pokemonType }}
-        </span>
-      </p>
-    </article>
-    <article>
-      <h2>Catégorie : {{ pokemon.category }}</h2>
-    </article>
-    <article>
-      <h2>Taille : {{ pokemon.height }}m</h2>
-      <h2>Poids : {{ pokemon.weight }}kg</h2>
-    </article>
-    <article>
-      <h2>Talent(s) :</h2>
-      <p class="pills">
-        <span
-          v-for="ability in pokemon.abilities.map(
-            (ability) => ability.ability.name
-          )"
-          :key="ability"
-          class="pill"
-        >
-          {{ ability }}
-        </span>
-      </p>
+      <h2>Statistiques :</h2>
+      <div class="wrapper-stats-chart card">
+        <canvas ref="statsChart"></canvas>
+      </div>
     </article>
     <article>
       <h2>Attaque(s) :</h2>
@@ -209,9 +226,14 @@ const pokemon = {
 </template>
 
 <style>
-.pokemon-details-sprite {
+#pokemon-details-sprite {
   width: 100%;
   max-width: 400px;
   image-rendering: pixelated;
+}
+
+.wrapper-stats-chart {
+  width: 50%;
+  height: 400px;
 }
 </style>

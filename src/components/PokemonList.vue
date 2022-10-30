@@ -20,7 +20,6 @@ const pokemons = [
 </script>
 
 <template>
-  <h1>Pocket-Pedia</h1>
   <h2>Liste des Pokémons&nbsp;:</h2>
   <ul id="pokemon-list">
     <li v-for="pokemon in pokemons" :key="pokemon.id">

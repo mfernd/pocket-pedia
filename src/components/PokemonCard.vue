@@ -19,7 +19,7 @@ const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/spr
 
 <template>
   <router-link :to="{ name: 'PokemonDetails', params: { id: speciesId } }">
-    <div class="pokemon-card">
+    <div class="card pokemon-card">
       <img
         :src="`${artworkUrl}/${speciesId}.png`"
         :alt="`Sprite du pokémon ${name}`"

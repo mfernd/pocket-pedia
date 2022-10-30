@@ -17,8 +17,55 @@
   border-radius: 3px;
   padding: 0.3rem;
   line-height: 100%;
-  background-color: #2f2f2f;
+  background-color: #4b4b4b;
   color: #fff;
+}
+
+.pill.background-color-normal {
+  background-color: #a4acaf;
+  color: #212121;
+}
+
+.pill.background-color-fighting {
+  background-color: #d56723;
+  color: #fff;
+}
+
+.pill.background-color-flying {
+  background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
+  background-color: #3dc7ef;
+  color: #212121;
+}
+
+.pill.background-color-poison {
+  background-color: #b97fc9;
+  color: #fff;
+}
+
+.pill.background-color-ground {
+  background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+  background-color: #f7de3f;
+  color: #212121;
+}
+
+.pill.background-color-rock {
+  background-color: #a38c21;
+  color: #fff;
+}
+
+.pill.background-color-bug {
+  background-color: #729f3f;
+  color: #fff;
+}
+
+.pill.background-color-ghost {
+  background-color: #7b62a3;
+  color: #fff;
+}
+
+.pill.background-color-steel {
+  background-color: #9eb7b8;
+  color: #212121;
 }
 
 .pill.background-color-fire {
@@ -26,13 +73,43 @@
   color: #fff;
 }
 
+.pill.background-color-water {
+  background-color: #4592c4;
+  color: #fff;
+}
+
+.pill.background-color-grass {
+  background-color: #9bcc50;
+  color: #212121;
+}
+
 .pill.background-color-electric {
   background-color: #eed535;
   color: #212121;
 }
 
-.pill.background-color-flying {
-  background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
-  background-color: #3dc7ef;
+.pill.background-color-psychic {
+  background-color: #f366b9;
+  color: #fff;
+}
+
+.pill.background-color-ice {
+  background-color: #53cef3;
+  color: #212121;
+}
+
+.pill.background-color-dragon {
+  background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+  background-color: #53a4cf;
+  color: #fff;
+}
+
+.pill.background-color-dark {
+  background-color: #707070;
+  color: #fff;
+}
+
+.pill.background-color-fairy {
+  background-color: #fdb9e9;
   color: #212121;
 }
