@@ -32,7 +32,7 @@ const pokemons = [
   </ul>
 </template>
 
-<style scoped>
+<style>
 #pokemon-list {
   display: flex;
   flex-flow: row wrap;

@@ -165,17 +165,17 @@ onMounted(() => {
     :alt="`Sprite du pokémon ${pokemon.name}`"
   />
   <h1>{{ pokemon.name }} (#{{ pokemon.speciesId }})</h1>
-  <h2 v-if="pokemon.isLegendary">Pokémon Légendaire</h2>
-  <h2 v-if="pokemon.isMythical">Pokémon Mythique</h2>
-  <section id="pokemon-details-columns">
-    <h1>Informations</h1>
+  <h3 v-if="pokemon.isLegendary">Pokémon Légendaire</h3>
+  <h3 v-if="pokemon.isMythical">Pokémon Mythique</h3>
+  <section id="pokemon-details-wrapper">
+    <h2>Informations</h2>
     <article>
-      <h2>Description :</h2>
+      <h3>Description :</h3>
       <p>{{ pokemon.description }}</p>
     </article>
     <div class="card" style="display: inline-block">
       <article>
-        <h2>Types :</h2>
+        <h3>Types :</h3>
         <p class="pills">
           <span
             v-for="pokemonType in pokemon.types"
@@ -187,14 +187,14 @@ onMounted(() => {
         </p>
       </article>
       <article>
-        <h2>Catégorie : {{ pokemon.category }}</h2>
+        <h3>Catégorie : {{ pokemon.category }}</h3>
       </article>
       <article>
-        <h2>Taille : {{ pokemon.height }}m</h2>
-        <h2>Poids : {{ pokemon.weight }}kg</h2>
+        <h3>Taille : {{ pokemon.height }}m</h3>
+        <h3>Poids : {{ pokemon.weight }}kg</h3>
       </article>
       <article>
-        <h2>Talent(s) :</h2>
+        <h3>Talent(s) :</h3>
         <p class="pills">
           <span
             v-for="ability in pokemon.abilities.map(
@@ -209,13 +209,13 @@ onMounted(() => {
       </article>
     </div>
     <article>
-      <h2>Statistiques :</h2>
-      <div class="wrapper-stats-chart card">
+      <h3>Statistiques :</h3>
+      <div id="pokemon-stats-wrapper card">
         <canvas ref="statsChart"></canvas>
       </div>
     </article>
     <article>
-      <h2>Attaque(s) :</h2>
+      <h3>Attaque(s) :</h3>
       <p class="pills">
         <span v-for="move in pokemon.moves" :key="move" class="pill">
           {{ move }}
@@ -232,7 +232,7 @@ onMounted(() => {
   image-rendering: pixelated;
 }
 
-.wrapper-stats-chart {
+#pokemon-stats-wrapper {
   width: 50%;
   height: 400px;
 }

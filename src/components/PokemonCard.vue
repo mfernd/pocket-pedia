@@ -19,13 +19,14 @@ const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/spr
 
 <template>
   <router-link :to="{ name: 'PokemonDetails', params: { id: speciesId } }">
-    <div class="card pokemon-card">
+    <div class="pokemon-card-wrapper card bounce">
       <img
+        class="pokemon-card-image"
         :src="`${artworkUrl}/${speciesId}.png`"
         :alt="`Sprite du pokémon ${name}`"
       />
-      <div class="pokemon-info">
-        <p class="pokemon-id">#{{ speciesId }}</p>
+      <div class="pokemon-card-info">
+        <p class="pokemon-card-id">#{{ speciesId }}</p>
         <h2>{{ name }}</h2>
         <div class="pills">
           <span
@@ -41,8 +42,8 @@ const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/spr
   </router-link>
 </template>
 
-<style scoped>
-.pokemon-card {
+<style>
+.pokemon-card-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,27 +51,27 @@ const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/spr
   max-width: 200px;
 }
 
-.pokemon-info {
+.pokemon-card-info {
   width: 100%;
 }
 
-.pokemon-id {
+.pokemon-card-id {
   color: #333;
   font-weight: bold;
 }
 
-img {
+.pokemon-card-image {
   width: 100%;
   background-color: #f2f2f2;
   border-radius: 5px;
   position: relative;
 }
 
-h2 {
+.pokemon-card-info h2 {
   margin: 0.2rem 0 7px;
 }
 
-p {
+.pokemon-card-info p {
   margin: 0.3rem 0 0.5rem;
   color: #919191;
 }

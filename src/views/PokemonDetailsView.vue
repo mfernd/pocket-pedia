@@ -8,4 +8,4 @@ import PokemonDetails from '@/components/PokemonDetails.vue';
   </main>
 </template>
 
-<style scoped></style>
+<style></style>
