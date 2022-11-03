@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
-import SearchBar from './components/SearchBar.vue';
+import SearchBar from '@/components/SearchBar.vue';
 </script>
 
 <template>
