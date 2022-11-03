@@ -14,4 +14,12 @@ module.exports = {
     'vue/comment-directive': 'off',
     'prettier/prettier': 'error',
   },
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['@', './src/']],
+        extensions: ['.js'],
+      },
+    },
+  },
 };

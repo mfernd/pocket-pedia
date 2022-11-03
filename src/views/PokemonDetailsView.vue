@@ -1,10 +1,10 @@
 <script setup>
-import PokemonList from '@/components/PokemonList.vue';
+import PokemonDetails from '@/components/PokemonDetails.vue';
 </script>
 
 <template>
   <main>
-    <PokemonList />
+    <PokemonDetails />
   </main>
 </template>
 
