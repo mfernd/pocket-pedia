@@ -1,33 +1,20 @@
 <script setup>
+import { onMounted, ref } from 'vue';
 import PokemonCard from '@/components/PokemonCard.vue';
+import { getPokemons } from '@/services/pokeapi/getters';
 
-const pokemons = [
-  {
-    id: 146,
-    name: 'Sulfura',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png',
-    types: ['fire', 'flying'],
-  },
-  {
-    id: 25,
-    name: 'Pikachu',
-    sprite:
-      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
-    types: ['electric'],
-  },
-];
+const pokemons = ref([]);
+
+onMounted(async () => {
+  pokemons.value = await getPokemons();
+});
 </script>
 
 <template>
   <h2>Liste des Pokémons&nbsp;:</h2>
   <ul id="pokemon-list">
-    <li v-for="pokemon in pokemons" :key="pokemon.id">
-      <PokemonCard
-        :speciesId="pokemon.id"
-        :name="pokemon.name"
-        :types="pokemon.types"
-      />
+    <li v-for="pokemon in pokemons" :key="pokemon.speciesId">
+      <PokemonCard :pokemon="pokemon" />
     </li>
   </ul>
 </template>
@@ -37,7 +24,11 @@ const pokemons = [
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: start;
-  gap: 2rem;
+  justify-content: space-between;
+}
+
+#pokemon-list li {
+  margin-bottom: 2rem;
+  text-transform: capitalize;
 }
 </style>

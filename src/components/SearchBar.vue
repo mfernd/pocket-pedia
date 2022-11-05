@@ -22,6 +22,7 @@ onMounted(() => {
       name="q"
       placeholder="Cherchez votre pokémon !"
       maxlength="50"
+      autocomplete="off"
     />
   </div>
 </template>
@@ -32,6 +33,7 @@ onMounted(() => {
   max-width: 700px;
   margin: 50px 0;
   margin-right: 0;
+  padding: 1rem 1.5rem;
 }
 
 #search-input {
@@ -40,6 +42,5 @@ onMounted(() => {
   height: 40px;
   border: none;
   outline: none;
-  /* flex: 1; */
 }
 </style>

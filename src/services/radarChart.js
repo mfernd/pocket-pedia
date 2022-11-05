@@ -23,7 +23,7 @@ Chart.defaults.font.family = "'Outfit', sans-serif";
 Chart.defaults.font.size = FONT_SIZE;
 Chart.defaults.font.weight = 'bold';
 
-export const createStatsChart = (contextElement) => {
+export const createStatsChart = (contextElement, statsData) => {
   const statsChartData = {
     labels: [
       'HP',
@@ -35,7 +35,7 @@ export const createStatsChart = (contextElement) => {
     ],
     datasets: [
       {
-        data: [90, 100, 90, 125, 85, 90],
+        data: statsData,
         datalabels: {
           align: 'end',
           clamp: true,
