@@ -57,6 +57,7 @@ defineProps(['pokemon']);
 }
 
 .pokemon-card-info h2 {
+  text-transform: capitalize;
   margin: 0.2rem 0 7px;
 }
 
