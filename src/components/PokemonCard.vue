@@ -1,36 +1,23 @@
 <script setup>
-defineProps({
-  speciesId: {
-    type: Number,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  types: {
-    type: Array,
-    required: true,
-  },
-});
-
-const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/`;
+defineProps(['pokemon']);
 </script>
 
 <template>
-  <router-link :to="{ name: 'PokemonDetails', params: { id: speciesId } }">
+  <router-link
+    :to="{ name: 'PokemonDetails', params: { id: pokemon.speciesId } }"
+  >
     <div class="pokemon-card-wrapper card bounce">
       <img
         class="pokemon-card-image"
-        :src="`${artworkUrl}/${speciesId}.png`"
-        :alt="`Sprite du pokémon ${name}`"
+        :src="pokemon.sprite"
+        :alt="`Sprite du pokémon ${pokemon.name}`"
       />
       <div class="pokemon-card-info">
-        <p class="pokemon-card-id">#{{ speciesId }}</p>
-        <h2>{{ name }}</h2>
+        <p class="pokemon-card-id">#{{ pokemon.speciesId }}</p>
+        <h2>{{ pokemon.name }}</h2>
         <div class="pills">
           <span
-            v-for="pokemonType in types"
+            v-for="pokemonType in pokemon.types"
             :key="pokemonType"
             :class="`pill background-color-${pokemonType}`"
           >
@@ -62,12 +49,15 @@ const artworkUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/spr
 
 .pokemon-card-image {
   width: 100%;
+  max-width: 200px;
   background-color: #f2f2f2;
   border-radius: 5px;
   position: relative;
+  /* image-rendering: pixelated; */
 }
 
 .pokemon-card-info h2 {
+  text-transform: capitalize;
   margin: 0.2rem 0 7px;
 }
 
