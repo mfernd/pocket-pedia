@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { createStatsChart } from '@/services/radarChart.js';
-import { getPokemonDetails } from '@/services/pokeapi/getters';
 import * as Utils from '@/services/pokeapi/pokeapiUtils';
+import { getDetails } from '@/services/pokeapi/getInfo';
+import { createStatsChart } from '@/services/radarChart';
 
 const pokemon = ref({
   speciesId: 0,
@@ -25,10 +25,12 @@ const pokemon = ref({
 });
 const statsChart = ref();
 
-onMounted(async () => {
+onMounted(() => {
   const route = useRoute();
-  pokemon.value = await getPokemonDetails(route.params.id);
-  createStatsChart(statsChart.value, pokemon.value.stats);
+  getDetails(route.params.id).then((res) => {
+    pokemon.value = res;
+    createStatsChart(statsChart.value, pokemon.value.stats);
+  });
 });
 </script>
 
@@ -98,7 +100,7 @@ onMounted(async () => {
 }
 
 #pokemon-details-sprite {
-  width: 200px;
+  min-width: 200px;
   image-rendering: pixelated;
 }
 

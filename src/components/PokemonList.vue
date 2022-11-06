@@ -1,12 +1,12 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import PokemonCard from '@/components/PokemonCard.vue';
-import { getPokemons } from '@/services/pokeapi/getters';
+import { getList } from '@/services/pokeapi/getList';
 
 const pokemons = ref([]);
 
-onMounted(async () => {
-  pokemons.value = await getPokemons();
+onMounted(() => {
+  getList().then((res) => (pokemons.value = res));
 });
 </script>
 
