@@ -53,7 +53,7 @@ defineProps(['pokemon']);
   background-color: #f2f2f2;
   border-radius: 5px;
   position: relative;
-  image-rendering: pixelated;
+  /* image-rendering: pixelated; */
 }
 
 .pokemon-card-info h2 {

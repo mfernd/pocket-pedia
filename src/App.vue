@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
-import SearchBar from '@/components/SearchBar.vue';
 </script>
 
 <template>
@@ -10,7 +9,6 @@ import SearchBar from '@/components/SearchBar.vue';
         <h1 class="card bounce">📚 PocketPedia</h1>
       </router-link>
     </nav>
-    <SearchBar />
   </header>
 
   <router-view />

@@ -8,7 +8,7 @@ export const getList = async () => {
 
   for (const pokemon of pokemons.results) {
     const pokemonId = pokemon.url
-      .replace('https://pokeapi.co/api/v2/pokemon/', '')
+      .replace('https://pokeapi.co/api/v2/pokemon-species/', '')
       .slice(0, -1);
     const types = [];
 
