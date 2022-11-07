@@ -7,11 +7,13 @@ defineProps(['pokemon']);
     :to="{ name: 'PokemonDetails', params: { id: pokemon.speciesId } }"
   >
     <div class="pokemon-card-wrapper card bounce">
-      <img
-        class="pokemon-card-image"
-        :src="pokemon.sprite"
-        :alt="`Sprite du pokémon ${pokemon.name}`"
-      />
+      <div class="pokemon-card-image">
+        <img
+          :src="pokemon.sprite"
+          :alt="`Sprite du pokémon ${pokemon.name}`"
+          loading="lazy"
+        />
+      </div>
       <div class="pokemon-card-info">
         <p class="pokemon-card-id">#{{ pokemon.speciesId }}</p>
         <h2>{{ pokemon.name }}</h2>
@@ -34,8 +36,20 @@ defineProps(['pokemon']);
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 200px;
+}
+
+.pokemon-card-image {
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: 200px;
   width: 100%;
-  max-width: 200px;
+}
+
+.pokemon-card-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 
 .pokemon-card-info {
@@ -45,15 +59,6 @@ defineProps(['pokemon']);
 .pokemon-card-id {
   color: #333;
   font-weight: bold;
-}
-
-.pokemon-card-image {
-  width: 100%;
-  max-width: 200px;
-  background-color: #f2f2f2;
-  border-radius: 5px;
-  position: relative;
-  /* image-rendering: pixelated; */
 }
 
 .pokemon-card-info h2 {
