@@ -35,4 +35,10 @@ defineEmits(['update:searchBar']);
   border: none;
   outline: none;
 }
+
+@media only screen and (max-width: 1280px) {
+  #search-bar-wrapper {
+    width: calc(100% - 5rem);
+  }
+}
 </style>

@@ -12,15 +12,16 @@ import { RouterLink, RouterView } from 'vue-router';
   </header>
 
   <router-view />
+
+  <footer>
+    <p>
+      ©2022 Pokémon. ©1995 - 2022 Nintendo/Creatures Inc./GAME FREAK inc. TM,
+      ®Nintendo.
+    </p>
+  </footer>
 </template>
 
 <style>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-  margin-bottom: 2rem;
-}
-
 .home-link {
   display: inline-block;
   height: 100%;
