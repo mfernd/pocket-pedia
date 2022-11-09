@@ -8,11 +8,7 @@ defineProps(['pokemon']);
   >
     <div class="pokemon-card-wrapper card bounce">
       <div class="pokemon-card-image">
-        <img
-          :src="pokemon.sprite"
-          :alt="`Sprite du pokémon ${pokemon.name}`"
-          loading="lazy"
-        />
+        <img :src="pokemon.sprite" :alt="`Sprite du pokémon ${pokemon.name}`" />
       </div>
       <div class="pokemon-card-info">
         <p class="pokemon-card-id">#{{ pokemon.speciesId }}</p>

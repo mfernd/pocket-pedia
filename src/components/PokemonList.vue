@@ -4,24 +4,41 @@ import SearchBar from '@/components/SearchBar.vue';
 import PokemonCard from '@/components/PokemonCard.vue';
 import { getList } from '@/services/pokeapi/getList';
 
-let pokemonsArray = [];
+let pokemonsData = [];
+let nbOfPokemon = 20;
+
 const pokemonsRendered = ref([]);
 const pokemonQuery = ref('');
+const bottomOfList = ref();
 
-onMounted(() => {
-  getList().then((res) => {
-    pokemonsArray = res;
-    pokemonsRendered.value = res.slice(0, 20);
-  });
+// Pokemon list behaviour
+onMounted(async () => {
+  pokemonsData = await getList();
+  pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon);
+
+  // Load more pokemons
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries.find((el) => el.target === bottomOfList.value);
+
+      if (entry.isIntersecting) {
+        nbOfPokemon += 20;
+        pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon);
+      }
+    },
+    { threshold: 1.0 }
+  );
+  observer.observe(bottomOfList.value);
 });
 
+// Search bar event
 watch(pokemonQuery, (query) => {
   if ('' === query.trim()) {
-    pokemonsRendered.value = pokemonsArray.slice(0, 20);
+    pokemonsRendered.value = pokemonsData.slice(0, 20);
     return;
   }
 
-  pokemonsRendered.value = pokemonsArray.filter((el) => {
+  pokemonsRendered.value = pokemonsData.filter((el) => {
     return el.name.toLowerCase().startsWith(query.toLowerCase());
   });
 });
@@ -37,7 +54,7 @@ watch(pokemonQuery, (query) => {
       <PokemonCard :pokemon="pokemon" />
     </li>
   </ul>
-  <div id="bottom-of-page"></div>
+  <div ref="bottomOfList"></div>
 </template>
 
 <style>
@@ -48,7 +65,7 @@ watch(pokemonQuery, (query) => {
 }
 
 #pokemon-list li {
-  margin: 0 75rem 3rem;
+  margin: 0 0.5rem 3rem;
 }
 
 @media only screen and (max-width: 1280px) {
