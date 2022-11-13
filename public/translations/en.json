@@ -1,4 +1,25 @@
 {
+  "messages": {
+    "pokDetails": {
+      "title": "Details",
+      "description": "Description:",
+      "height": "Height:",
+      "weight": "Weight:",
+      "moves": "Move(s):",
+      "abilities": "Abilities:",
+      "stats": "Statistics:"
+    },
+    "pokemonList": "Pokemon's list:",
+    "searchPlaceholder": "Search your pokemon!",
+    "stats": {
+      "hp": "HP",
+      "attack": "Attack",
+      "defense": "Defense",
+      "specialAttack": "Special Attack",
+      "specialDefense": "Special Defense",
+      "speed": "Speed"
+    }
+  },
   "pokemonTypes": [
     "normal",
     "fighting",

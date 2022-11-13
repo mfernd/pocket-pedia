@@ -1,4 +1,25 @@
 {
+  "messages": {
+    "pokDetails": {
+      "title": "",
+      "description": "",
+      "height": "",
+      "weight": "",
+      "moves": "",
+      "abilities": "特性",
+      "stats": ""
+    },
+    "pokemonList": "",
+    "searchPlaceholder": "",
+    "stats": {
+      "hp": "",
+      "attack": "",
+      "defense": "",
+      "specialAttack": "",
+      "specialDefense": "",
+      "speed": ""
+    }
+  },
   "pokemonTypes": [
     "ノーマル",
     "かくとう",

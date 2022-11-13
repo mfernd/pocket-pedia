@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PokemonCard from '@/components/PokemonCard.vue';
 import { getList } from '@/services/pokeapi/getList';
+import { tr } from '@/services/translator';
 
 let pokemonsData = [];
 let nbOfPokemon = 20;
@@ -21,9 +22,13 @@ onMounted(async () => {
     (entries) => {
       const entry = entries.find((el) => el.target === bottomOfList.value);
 
-      if (entry.isIntersecting) {
+      if (
+        entry.isIntersecting &&
+        !(pokemonsRendered.value.length - 1 === nbOfPokemon)
+      ) {
+        // console.log(`nb of pokemon rendered: ${pokemonsRendered.value.length}`);
         nbOfPokemon += 20;
-        pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon);
+        pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon); // TODO: Search function
       }
     },
     { threshold: 1.0 }
@@ -33,7 +38,7 @@ onMounted(async () => {
 
 // Search bar event
 watch(pokemonQuery, (query) => {
-  if ('' === query.trim()) {
+  if ('' === query) {
     pokemonsRendered.value = pokemonsData.slice(0, 20);
     return;
   }
@@ -47,7 +52,7 @@ watch(pokemonQuery, (query) => {
 <template>
   <SearchBar v-model:search-bar="pokemonQuery" />
 
-  <h2>Liste des Pokémons&nbsp;:</h2>
+  <h2>{{ tr.messages.pokemonList }}</h2>
 
   <ul id="pokemon-list">
     <li v-for="pokemon in pokemonsRendered" :key="pokemon.speciesId">

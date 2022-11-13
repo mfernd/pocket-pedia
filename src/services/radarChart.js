@@ -7,6 +7,7 @@ import {
   RadialLinearScale,
   Filler,
 } from 'chart.js';
+import { tr } from '@/services/translator';
 
 Chart.register(
   RadarController,
@@ -26,12 +27,12 @@ Chart.defaults.font.weight = 'bold';
 export const createStatsChart = (contextElement, statsData) => {
   const statsChartData = {
     labels: [
-      'HP',
-      'Attack',
-      'Defense',
-      'Special Attack',
-      'Special Defense',
-      'Speed',
+      tr.messages.stats.hp,
+      tr.messages.stats.attack,
+      tr.messages.stats.defense,
+      tr.messages.stats.specialAttack,
+      tr.messages.stats.specialDefense,
+      tr.messages.stats.speed,
     ],
     datasets: [
       {
