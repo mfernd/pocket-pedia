@@ -15,7 +15,7 @@ export const getList = async () => {
     for (const typeName in pokemonsTypes) {
       if (pokemonsTypes.hasOwnProperty(typeName)) {
         const elFound = pokemonsTypes[typeName].find(
-          (el) => el.pokemon.name === pokemon.name
+          (el) => Number(el.id) === Number(pokemonId)
         );
         if (elFound) {
           types.push(typeName);

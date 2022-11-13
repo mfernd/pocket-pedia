@@ -11,7 +11,14 @@ export const getPokemonsDataByType = async () => {
   for (let i = 1; i <= 18; i++) {
     const resp = await fetch(`${API_URL}/type/${i}`);
     const type = await resp.json();
-    res[type.name] = type.pokemon;
+    res[type.name] = type.pokemon.map((el) => {
+      return {
+        id: el.pokemon.url
+          .replace('https://pokeapi.co/api/v2/pokemon/', '')
+          .slice(0, -1),
+        name: el.pokemon.name,
+      };
+    });
   }
 
   return res;
