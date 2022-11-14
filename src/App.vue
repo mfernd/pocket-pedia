@@ -5,8 +5,9 @@ import { RouterLink, RouterView } from 'vue-router';
 <template>
   <header>
     <nav>
-      <router-link class="home-link" :to="{ name: 'Home' }">
-        <h1 class="card bounce">📚 PocketPedia</h1>
+      <router-link class="home-link card bounce" :to="{ name: 'Home' }">
+        <img src="/logo.png" alt="Pokect-pedia logo" />
+        <h1>PocketPedia</h1>
       </router-link>
     </nav>
   </header>
@@ -23,12 +24,13 @@ import { RouterLink, RouterView } from 'vue-router';
 
 <style>
 .home-link {
-  display: inline-block;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  width: min-content;
 }
 
 .home-link > h1 {
   display: inline-block;
-  margin: 0;
+  margin: 0 10px 0 0;
 }
 </style>

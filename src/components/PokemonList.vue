@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, watch } from 'vue';
+import { onBeforeMount, ref, watch } from 'vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PokemonCard from '@/components/PokemonCard.vue';
 import { getList } from '@/services/pokeapi/getList';
@@ -13,7 +13,7 @@ const pokemonQuery = ref('');
 const bottomOfList = ref();
 
 // Pokemon list behaviour
-onMounted(async () => {
+onBeforeMount(async () => {
   pokemonsData = await getList();
   pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon);
 
