@@ -1,13 +1,17 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import SelectLanguage from './components/SelectLanguage.vue';
 </script>
 
 <template>
   <header>
     <nav>
-      <router-link class="home-link" :to="{ name: 'Home' }">
-        <h1 class="card bounce">📚 PocketPedia</h1>
+      <router-link class="home-link card bounce" :to="{ name: 'Home' }">
+        <img src="/images/logo.png" alt="Pokect-pedia logo" />
+        <h1>PocketPedia</h1>
       </router-link>
+
+      <SelectLanguage />
     </nav>
   </header>
 
@@ -22,13 +26,30 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>
 
 <style>
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+@media only screen and (max-width: 1280px) {
+  nav {
+    justify-content: space-between;
+    width: 100%;
+    max-width: 752px;
+  }
+}
+
 .home-link {
-  display: inline-block;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  width: min-content;
+  gap: 10px;
 }
 
 .home-link > h1 {
   display: inline-block;
-  margin: 0;
+  margin: 0 10px 0 0;
 }
 </style>

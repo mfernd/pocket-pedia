@@ -3,15 +3,13 @@ defineProps(['pokemon']);
 </script>
 
 <template>
-  <router-link
-    :to="{ name: 'PokemonDetails', params: { id: pokemon.speciesId } }"
-  >
+  <router-link :to="{ name: 'PokemonDetails', params: { id: pokemon.id } }">
     <div class="pokemon-card-wrapper card bounce">
       <div class="pokemon-card-image">
         <img :src="pokemon.sprite" :alt="`Sprite du pokémon ${pokemon.name}`" />
       </div>
       <div class="pokemon-card-info">
-        <p class="pokemon-card-id">#{{ pokemon.speciesId }}</p>
+        <p class="pokemon-card-id">#{{ pokemon.id }}</p>
         <h2>{{ pokemon.name }}</h2>
         <div class="pills">
           <span
