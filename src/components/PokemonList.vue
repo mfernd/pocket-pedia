@@ -2,7 +2,7 @@
 import { onBeforeMount, ref, watch } from 'vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PokemonCard from '@/components/PokemonCard.vue';
-import { getList } from '@/services/pokeapi/getList';
+import { getList, search } from '@/services/pokeapi/getList';
 import { tr } from '@/services/translator';
 
 let pokemonsData = [];
@@ -21,15 +21,11 @@ onBeforeMount(async () => {
   const observer = new IntersectionObserver(
     (entries) => {
       const entry = entries.find((el) => el.target === bottomOfList.value);
+      if (!entry.isIntersecting) return;
 
-      if (
-        entry.isIntersecting &&
-        !(pokemonsRendered.value.length - 1 === nbOfPokemon)
-      ) {
-        // console.log(`nb of pokemon rendered: ${pokemonsRendered.value.length}`);
-        nbOfPokemon += 20;
-        pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon); // TODO: Search function
-      }
+      nbOfPokemon += 20;
+      const filtered = search(pokemonsData, pokemonQuery.value);
+      pokemonsRendered.value = filtered.slice(0, nbOfPokemon);
     },
     { threshold: 1.0 }
   );
@@ -38,14 +34,10 @@ onBeforeMount(async () => {
 
 // Search bar event
 watch(pokemonQuery, (query) => {
-  if ('' === query) {
-    pokemonsRendered.value = pokemonsData.slice(0, 20);
-    return;
+  if (query === '') {
+    nbOfPokemon = 20;
   }
-
-  pokemonsRendered.value = pokemonsData.filter((el) => {
-    return el.name.toLowerCase().startsWith(query.toLowerCase());
-  });
+  pokemonsRendered.value = search(pokemonsData, query).slice(0, nbOfPokemon);
 });
 </script>
 
@@ -55,7 +47,7 @@ watch(pokemonQuery, (query) => {
   <h2>{{ tr.messages.pokemonList }}</h2>
 
   <ul id="pokemon-list">
-    <li v-for="pokemon in pokemonsRendered" :key="pokemon.speciesId">
+    <li v-for="pokemon in pokemonsRendered" :key="pokemon.id">
       <PokemonCard :pokemon="pokemon" />
     </li>
   </ul>

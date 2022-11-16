@@ -7,7 +7,7 @@ import { createStatsChart } from '@/services/radarChart';
 import { tr } from '@/services/translator';
 
 const pokemon = ref({
-  speciesId: 0,
+  id: 0,
   name: 'Unknown',
   sprites: {
     animated: '',
@@ -43,9 +43,7 @@ onMounted(() => {
         :src="pokemon.sprites.animated?.front ?? pokemon.sprites.default"
         :alt="`Sprite du pokémon ${pokemon.name}`"
       />
-      <h1 id="pokemon-details-name">
-        {{ pokemon.name }} (#{{ pokemon.speciesId }})
-      </h1>
+      <h1 id="pokemon-details-name">{{ pokemon.name }} (#{{ pokemon.id }})</h1>
       <h2>{{ pokemon.category }}</h2>
       <h3 v-if="pokemon.isLegendary">Pokémon Légendaire</h3>
       <h3 v-if="pokemon.isMythical">Pokémon Mythique</h3>

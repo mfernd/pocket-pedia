@@ -1,12 +1,12 @@
 import * as Utils from '@/services/pokeapi/pokeapiUtils';
 import { getPokemonDataById, getPokemonSpeciesDataById } from './fetchData';
 
-export const getDetails = async (speciesId) => {
-  const pok = await getPokemonDataById(speciesId);
-  const pokSpecies = await getPokemonSpeciesDataById(speciesId);
+export const getDetails = async (id) => {
+  const pok = await getPokemonDataById(id);
+  const pokSpecies = await getPokemonSpeciesDataById(id);
 
   return {
-    speciesId: Number(pokSpecies.id),
+    id: Number(pokSpecies.id),
 
     name: pokSpecies.names.find((el) => el.language.name === 'fr').name,
 

@@ -25,3 +25,11 @@ const getTranslations = async () => {
   const respTranslations = await fetch(`/translations/${currentLang}.json`);
   return respTranslations.json();
 };
+
+export const getPokemonNames = () => {
+  return tr.pokemonNames;
+};
+
+export const getPokemonTypes = () => {
+  return tr.pokemonTypes;
+};

@@ -1,21 +1,19 @@
 import * as Utils from '@/services/pokeapi/pokeapiUtils';
-import { getPokemonsData, getPokemonsDataByType } from './fetchData';
+import { getPokemonsDataByType } from './fetchData';
+import { getPokemonNames } from '@/services/translator';
 
 export const getList = async () => {
-  const pokemons = await getPokemonsData();
+  const pokemons = getPokemonNames();
   const pokemonsTypes = await getPokemonsDataByType();
   const res = [];
 
-  for (const pokemon of pokemons.results) {
-    const pokemonId = pokemon.url
-      .replace('https://pokeapi.co/api/v2/pokemon-species/', '')
-      .slice(0, -1);
+  for (const pokemon of pokemons) {
     const types = [];
 
     for (const typeName in pokemonsTypes) {
       if (pokemonsTypes.hasOwnProperty(typeName)) {
         const elFound = pokemonsTypes[typeName].find(
-          (el) => Number(el.id) === Number(pokemonId)
+          (el) => Number(el.id) === Number(pokemon.id)
         );
         if (elFound) {
           types.push(typeName);
@@ -24,12 +22,27 @@ export const getList = async () => {
     }
 
     res.push({
-      speciesId: Number(pokemonId),
+      id: Number(pokemon.id),
       name: pokemon.name,
-      sprite: Utils.getArtworkUrl(pokemonId),
+      sprite: Utils.getArtworkUrl(pokemon.id),
       types: types,
     });
   }
 
   return res;
+};
+
+export const search = (data, query) => {
+  if (query === undefined || query === null || query === '') {
+    return data;
+  }
+
+  return data.filter((pokemon) => {
+    const pokemonId = String(pokemon.id).startsWith(String(query));
+    const pokemonName = pokemon.name
+      .toLowerCase()
+      .startsWith(query.toLowerCase());
+
+    return pokemonId || pokemonName;
+  });
 };
