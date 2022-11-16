@@ -33,3 +33,7 @@ export const getPokemonNames = () => {
 export const getPokemonTypes = () => {
   return tr.pokemonTypes;
 };
+
+export const getCurrentLang = () => {
+  return localStorage.getItem(KEY_NAME) ?? LANGS[0];
+};

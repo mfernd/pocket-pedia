@@ -18,7 +18,8 @@
       "specialAttack": "Attaque Spéciale",
       "specialDefense": "Défense Spéciale",
       "speed": "Vitesse"
-    }
+    },
+    "lang": "Langue"
   },
   "pokemonTypes": [
     "normal",
