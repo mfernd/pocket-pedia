@@ -2,7 +2,7 @@
 import { onBeforeMount, ref, watch } from 'vue';
 import SearchBar from '@/components/SearchBar.vue';
 import PokemonCard from '@/components/PokemonCard.vue';
-import { getList, search } from '@/services/pokeapi/getList';
+import { getList, filterPokemonsByQuery } from '@/services/pokeapi/getList';
 import { tr } from '@/services/translator';
 
 let pokemonsData = [];
@@ -21,10 +21,10 @@ onBeforeMount(async () => {
   const observer = new IntersectionObserver(
     (entries) => {
       const entry = entries.find((el) => el.target === bottomOfList.value);
-      if (!entry.isIntersecting) return;
+      if (entry !== undefined && !entry.isIntersecting) return;
 
       nbOfPokemon += 20;
-      const filtered = search(pokemonsData, pokemonQuery.value);
+      const filtered = filterPokemonsByQuery(pokemonsData, pokemonQuery.value);
       pokemonsRendered.value = filtered.slice(0, nbOfPokemon);
     },
     { threshold: 1.0 }
@@ -37,7 +37,9 @@ watch(pokemonQuery, (query) => {
   if (query === '') {
     nbOfPokemon = 20;
   }
-  pokemonsRendered.value = search(pokemonsData, query).slice(0, nbOfPokemon);
+
+  const filtered = filterPokemonsByQuery(pokemonsData, query);
+  pokemonsRendered.value = filtered.slice(0, nbOfPokemon);
 });
 </script>
 

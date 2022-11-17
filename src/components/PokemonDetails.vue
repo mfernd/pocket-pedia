@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onBeforeMount, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import * as Utils from '@/services/pokeapi/pokeapiUtils';
 import { getDetails } from '@/services/pokeapi/getInfo';
@@ -11,8 +11,8 @@ const pokemon = ref({
   name: 'Unknown',
   sprites: {
     animated: '',
-    artwork: Utils.getArtworkUrl(0),
-    default: '',
+    artwork: '',
+    default: Utils.getDefaultUrls(0),
   },
   category: [],
   stats: [0, 0, 0, 0, 0, 0],
@@ -26,12 +26,10 @@ const pokemon = ref({
 });
 const statsChart = ref();
 
-onMounted(() => {
+onBeforeMount(async () => {
   const route = useRoute();
-  getDetails(route.params.id).then((res) => {
-    pokemon.value = res;
-    createStatsChart(statsChart.value, pokemon.value.stats);
-  });
+  pokemon.value = await getDetails(route.params.id);
+  createStatsChart(statsChart.value, pokemon.value.stats);
 });
 </script>
 
@@ -40,7 +38,7 @@ onMounted(() => {
     <div class="card">
       <img
         id="pokemon-details-sprite"
-        :src="pokemon.sprites.animated?.front ?? pokemon.sprites.default"
+        :src="pokemon.sprites.animated?.front ?? pokemon.sprites.default.front"
         :alt="`Sprite du pokémon ${pokemon.name}`"
       />
       <h1 id="pokemon-details-name">{{ pokemon.name }} (#{{ pokemon.id }})</h1>
@@ -51,9 +49,9 @@ onMounted(() => {
         <span
           v-for="pokemonType in pokemon.types"
           :key="pokemonType"
-          :class="`pill background-color-${pokemonType}`"
+          :class="`pill background-color-${pokemonType.class}`"
         >
-          {{ pokemonType }}
+          {{ pokemonType.name }}
         </span>
       </div>
     </div>

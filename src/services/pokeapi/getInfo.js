@@ -1,26 +1,42 @@
 import * as Utils from '@/services/pokeapi/pokeapiUtils';
-import { getPokemonDataById, getPokemonSpeciesDataById } from './fetchData';
+import { getCurrentLang, getPokemonTypes } from '@/services/translator';
+
+const API_URL = 'https://pokeapi.co/api/v2';
 
 export const getDetails = async (id) => {
   const pok = await getPokemonDataById(id);
   const pokSpecies = await getPokemonSpeciesDataById(id);
+  const types = getPokemonTypes();
+
+  let currentLang = getCurrentLang();
+  if (currentLang === 'jp') {
+    currentLang = 'ja';
+  }
+
+  let description = pokSpecies['flavor_text_entries'].find(
+    (el) => el.language.name === currentLang
+  );
+  if (!description) {
+    description = pokSpecies['flavor_text_entries'].find(
+      (el) => el.language.name === 'en'
+    );
+  }
 
   return {
     id: Number(pokSpecies.id),
 
-    name: pokSpecies.names.find((el) => el.language.name === 'fr').name,
+    name: pokSpecies.names.find((el) => el.language.name === currentLang).name,
 
-    description: pokSpecies['flavor_text_entries'].find(
-      (el) => el.language.name === 'fr'
-    )['flavor_text'],
+    description: description['flavor_text'],
 
     sprites: {
       animated: Utils.getAnimatedUrls(pok.id),
       artwork: Utils.getArtworkUrl(pok.id),
-      default: Utils.getArtworkUrl(pok.id),
+      default: Utils.getDefaultUrls(pok.id),
     },
 
-    category: pokSpecies.genera.find((el) => el.language.name === 'fr').genus,
+    category: pokSpecies.genera.find((el) => el.language.name === currentLang)
+      .genus,
 
     stats: pok.stats.map((el) => el['base_stat']),
 
@@ -28,7 +44,10 @@ export const getDetails = async (id) => {
 
     abilities: pok.abilities.map((el) => el.ability.name),
 
-    types: pok.types.map((el) => el.type.name),
+    types: pok.types.map((el) => ({
+      name: types[el.type.name],
+      class: el.type.name,
+    })),
 
     height: Number(pok.height) / 10,
 
@@ -38,4 +57,14 @@ export const getDetails = async (id) => {
 
     isMythical: pokSpecies['is_mythical'],
   };
+};
+
+const getPokemonDataById = async (id) => {
+  const resp = await fetch(`${API_URL}/pokemon/${id}`);
+  return resp.json();
+};
+
+const getPokemonSpeciesDataById = async (id) => {
+  const resp = await fetch(`${API_URL}/pokemon-species/${id}`);
+  return resp.json();
 };

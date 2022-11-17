@@ -15,9 +15,9 @@ defineProps(['pokemon']);
           <span
             v-for="pokemonType in pokemon.types"
             :key="pokemonType"
-            :class="`pill background-color-${pokemonType}`"
+            :class="`pill background-color-${pokemonType.class}`"
           >
-            {{ pokemonType }}
+            {{ pokemonType.name }}
           </span>
         </div>
       </div>

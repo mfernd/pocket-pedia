@@ -1,4 +1,5 @@
 <script setup>
+import { tr } from '@/services/translator';
 defineProps({
   searchBar: String,
 });
@@ -13,7 +14,7 @@ defineEmits(['update:searchBar']);
       @input="$emit('update:searchBar', $event.target.value)"
       id="search-input"
       type="search"
-      placeholder="Cherchez votre pokémon !"
+      :placeholder="tr.messages.searchPlaceholder"
       maxlength="50"
       autocomplete="off"
     />
