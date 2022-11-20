@@ -28,6 +28,7 @@ const pokemon = ref({
   evolutionChainId: null,
 });
 const statsChart = ref();
+const showMoves = ref(false);
 
 onBeforeMount(async () => {
   const route = useRoute();
@@ -95,20 +96,28 @@ onBeforeMount(async () => {
       </div>
     </section>
 
-    <article id="pokemon-details-stats" class="card">
-      <h3>{{ tr.messages.pokDetails.stats }}</h3>
-      <div>
-        <canvas ref="statsChart"></canvas>
+    <article id="pokemon-details-stats">
+      <div class="card">
+        <h3>{{ tr.messages.pokDetails.stats }}</h3>
+        <div>
+          <canvas ref="statsChart"></canvas>
+        </div>
       </div>
     </article>
 
-    <article id="pokemon-details-moves" class="card">
-      <h3>{{ tr.messages.pokDetails.moves }}</h3>
-      <p class="pills">
-        <span v-for="move in pokemon.moves" :key="move" class="pill">
-          {{ move }}
-        </span>
-      </p>
+    <article id="pokemon-details-moves" @click="() => (showMoves = !showMoves)">
+      <div class="card">
+        <h3>
+          <span v-if="!showMoves">➕</span>
+          <span v-if="showMoves">➖</span>
+          {{ tr.messages.pokDetails.moves }}
+        </h3>
+        <p class="pills" v-if="showMoves">
+          <span v-for="move in pokemon.moves" :key="move" class="pill">
+            {{ move }}
+          </span>
+        </p>
+      </div>
     </article>
   </div>
 </template>
@@ -160,7 +169,6 @@ h3 {
 #pokemon-details-header > .second-column {
   justify-content: space-between;
   width: 500px;
-  height: 100%;
 }
 
 #pokemon-details-header h1 {
@@ -187,7 +195,24 @@ h3 {
 }
 
 #pokemon-details-stats {
-  width: 500px;
-  max-width: 100%;
+  width: 700px;
+}
+
+#pokemon-details-moves {
+  cursor: pointer;
+  width: 700px;
+}
+
+#pokemon-details-moves .card:hover {
+  transition: background-color 100ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#pokemon-details-moves h3 {
+  margin: 0;
+}
+
+#pokemon-details-moves p {
+  margin-top: 1rem;
 }
 </style>
