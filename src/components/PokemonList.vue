@@ -26,6 +26,7 @@ onBeforeMount(async () => {
     (entries) => {
       const entry = entries.find((el) => el.target === bottomOfList.value);
       if (entry !== undefined && !entry.isIntersecting) return;
+      if (pokemonsRendered.value.length === pokemonsData.length) return;
 
       nbOfPokemon += 20;
       const filtered = filterPokemonsByQuery(pokemonsData, pokemonQuery.value);

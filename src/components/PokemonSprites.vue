@@ -1,10 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-defineProps(['pokemonName', 'pokemonSize', 'sprites']);
+const props = defineProps(['pokemonName', 'pokemonSize', 'sprites']);
 
 const isFront = ref(true);
 
 const handleClickSprite = () => {
+  if (null === props.sprites.default.back) return;
+
   isFront.value = !isFront.value;
 };
 </script>
@@ -23,6 +25,7 @@ const handleClickSprite = () => {
     />
     <img
       v-show="!isFront"
+      v-if="null !== sprites.default.back"
       class="pokemon-sprite"
       :src="sprites.animated?.back ?? sprites.default.back"
       :alt="`Sprite du pokémon ${pokemonName}`"
@@ -50,8 +53,8 @@ const handleClickSprite = () => {
   margin: 0;
   background-blend-mode: screen;
   z-index: 1;
-  height: calc(50% * var(--pokemonSize));
-  min-height: 70px;
+  height: calc(60% * var(--pokemonSize));
+  min-height: 50px;
   max-height: calc(100% - 25px);
   transform: translateY(-40px);
 }

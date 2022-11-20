@@ -62,9 +62,7 @@ const getPokemonsDataByType = async () => {
 
     res[type.name] = type.pokemon.map((el) => {
       return {
-        id: el.pokemon.url
-          .replace('https://pokeapi.co/api/v2/pokemon/', '')
-          .slice(0, -1),
+        id: el.pokemon.url.split('/')[6],
         name: el.pokemon.name,
       };
     });

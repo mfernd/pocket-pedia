@@ -5,7 +5,8 @@ import * as Utils from '@/services/pokeapi/pokeapiUtils';
 import { getDetails } from '@/services/pokeapi/getInfo';
 import { createStatsChart } from '@/services/radarChart';
 import { tr } from '@/services/translator';
-import PokemonSprites from './PokemonSprites.vue';
+import PokemonSprites from '@/components/PokemonSprites.vue';
+import PokemonEvolution from '@/components/PokemonEvolution.vue';
 
 const pokemon = ref({
   id: 0,
@@ -24,6 +25,7 @@ const pokemon = ref({
   weight: 0,
   isLegendary: false,
   isMythical: false,
+  evolutionChainId: null,
 });
 const statsChart = ref();
 
@@ -60,27 +62,36 @@ onBeforeMount(async () => {
         </p>
       </article>
 
-      <div class="second-column card">
-        <article id="pokemon-details-description">
-          <h3>{{ tr.messages.pokDetails.description }}</h3>
-          <p>{{ pokemon.description }}</p>
-        </article>
-        <article>
-          <h3>{{ tr.messages.pokDetails.height }} {{ pokemon.height }}m</h3>
-          <h3>{{ tr.messages.pokDetails.weight }} {{ pokemon.weight }}kg</h3>
-        </article>
-        <article>
-          <h3>{{ tr.messages.pokDetails.abilities }}</h3>
-          <p class="pills">
-            <span
-              v-for="ability in pokemon.abilities"
-              :key="ability"
-              class="pill"
-            >
-              {{ ability }}
-            </span>
-          </p>
-        </article>
+      <div class="second-column">
+        <div class="card">
+          <article id="pokemon-details-description">
+            <h3>{{ tr.messages.pokDetails.description }}</h3>
+            <p>{{ pokemon.description }}</p>
+          </article>
+          <article>
+            <h3>{{ tr.messages.pokDetails.height }} {{ pokemon.height }}m</h3>
+            <h3>{{ tr.messages.pokDetails.weight }} {{ pokemon.weight }}kg</h3>
+          </article>
+          <article>
+            <h3>{{ tr.messages.pokDetails.abilities }}</h3>
+            <p class="pills">
+              <span
+                v-for="ability in pokemon.abilities"
+                :key="ability"
+                class="pill"
+              >
+                {{ ability }}
+              </span>
+            </p>
+          </article>
+        </div>
+
+        <div class="card">
+          <PokemonEvolution
+            v-if="pokemon.evolutionChainId"
+            :evolutionId="pokemon.evolutionChainId"
+          />
+        </div>
       </div>
     </section>
 
@@ -137,17 +148,19 @@ h3 {
 #pokemon-details-header > * {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1rem;
   max-width: 100%;
 }
 
 #pokemon-details-header > .first-column {
+  justify-content: center;
   width: 350px;
 }
 
 #pokemon-details-header > .second-column {
+  justify-content: space-between;
   width: 500px;
+  height: 100%;
 }
 
 #pokemon-details-header h1 {
@@ -167,6 +180,10 @@ h3 {
 #pokemon-details-header p {
   font-size: 1.2rem;
   margin: 0;
+}
+
+#pokemon-details-description {
+  margin-bottom: 0.5rem;
 }
 
 #pokemon-details-stats {

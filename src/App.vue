@@ -15,7 +15,7 @@ import SelectLanguage from './components/SelectLanguage.vue';
     </nav>
   </header>
 
-  <router-view />
+  <router-view :key="$route.fullPath" />
 
   <footer>
     <p>

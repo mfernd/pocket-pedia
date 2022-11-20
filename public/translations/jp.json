@@ -7,7 +7,8 @@
       "weight": "重さ：",
       "moves": "わざ一覧：",
       "abilities": "特性：",
-      "stats": "パラメータ："
+      "stats": "パラメータ：",
+      "evolutions": "進化："
     },
     "pokemonList": "ポケモン一覧：",
     "searchPlaceholder": "ポケモンを探せ!",

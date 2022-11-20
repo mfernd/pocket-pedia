@@ -16,6 +16,13 @@ export const getAnimatedUrls = (speciesId) => {
 };
 
 export const getDefaultUrls = (speciesId) => {
+  if (speciesId > 898) {
+    return {
+      back: null,
+      front: `${SPRITE_URL}/pokemon/${speciesId}.png`,
+    };
+  }
+
   return {
     back: `${SPRITE_URL}/pokemon/back/${speciesId}.png`,
     front: `${SPRITE_URL}/pokemon/${speciesId}.png`,

@@ -22,6 +22,11 @@ export const getDetails = async (id) => {
     );
   }
 
+  let evolutionChainId = pokSpecies['evolution_chain'];
+  if (null !== evolutionChainId) {
+    evolutionChainId = evolutionChainId.url.split('/')[6];
+  }
+
   return {
     id: Number(pokSpecies.id),
 
@@ -56,6 +61,8 @@ export const getDetails = async (id) => {
     isLegendary: pokSpecies['is_legendary'],
 
     isMythical: pokSpecies['is_mythical'],
+
+    evolutionChainId: Number(evolutionChainId),
   };
 };
 
