@@ -40,6 +40,7 @@ npm run build
 - [ ] Filters by type / form / generation
 - [ ] Pokemon varieties in details
 - [ ] Weaknesses of pokemon in details
+- [ ] More responsive…
 - [ ] more?
 
 ## Credits
