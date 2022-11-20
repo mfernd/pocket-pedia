@@ -42,6 +42,7 @@ const handlerLang = (lang) => {
 
 .lang-wrapper:hover .lang-choices {
   display: flex;
+  z-index: 10;
 }
 
 .lang-choices {
@@ -55,7 +56,7 @@ const handlerLang = (lang) => {
   width: max-content;
   font-size: 1.2rem;
   border: 2px solid #e0e0e0;
-  box-shadow: #ededed 0 10px 10px;
+  box-shadow: var(--box-shadow);
 }
 
 @media only screen and (max-width: 1280px) {

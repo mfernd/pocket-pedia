@@ -2,8 +2,8 @@
   padding: 1rem;
   background-color: #fff;
   border: 2px solid #e0e0e0;
-  border-radius: 15px;
-  box-shadow: #ededed 0 10px 10px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
 
   /* transition: transform 100ms ease-in-out; */
 }

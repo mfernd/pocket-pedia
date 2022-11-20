@@ -30,12 +30,18 @@ nav {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 @media only screen and (max-width: 1280px) {
+  #app main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   nav {
-    justify-content: space-between;
     width: 100%;
     max-width: 752px;
   }

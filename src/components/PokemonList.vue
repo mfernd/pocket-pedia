@@ -10,11 +10,15 @@ let nbOfPokemon = 20;
 
 const pokemonsRendered = ref([]);
 const pokemonQuery = ref('');
+const loadingSprite = ref();
 const bottomOfList = ref();
 
 // Pokemon list behaviour
 onBeforeMount(async () => {
   pokemonsData = await getList();
+
+  loadingSprite.value.remove();
+
   pokemonsRendered.value = pokemonsData.slice(0, nbOfPokemon);
 
   // Load more pokemons
@@ -53,6 +57,14 @@ watch(pokemonQuery, (query) => {
       <PokemonCard :pokemon="pokemon" />
     </li>
   </ul>
+
+  <img
+    ref="loadingSprite"
+    id="loading"
+    src="/images/loading.gif"
+    alt="loading image"
+  />
+
   <div ref="bottomOfList"></div>
 </template>
 
@@ -67,14 +79,15 @@ watch(pokemonQuery, (query) => {
   margin: 0 0.5rem 3rem;
 }
 
-@media only screen and (max-width: 1280px) {
-  #app header,
-  #app main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+#loading {
+  display: block;
+  image-rendering: pixelated;
+  width: 300px;
+  max-width: 100%;
+  margin: 3rem auto 0;
+}
 
+@media only screen and (max-width: 1280px) {
   #pokemon-list {
     justify-content: center;
     gap: 1.5rem;

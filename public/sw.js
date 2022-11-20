@@ -12,6 +12,11 @@ const addRessourcesToCache = async () => {
     '/translations/en.json',
     '/translations/fr.json',
     '/translations/jp.json',
+    '/images/battle_base1.png',
+    '/images/field.png',
+    '/images/loading.gif',
+    '/images/logo.png',
+    '/images/translation.svg',
   ]);
 
   return cache;
