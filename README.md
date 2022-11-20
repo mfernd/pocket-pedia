@@ -46,4 +46,4 @@ npm run build
 
 - Pokemon Company (sprites & official pokedex)
 - [PokeAPI](https://pokeapi.co/) (for the api 👍)
-- [Spriters Ressource](https://spriters-resource.com/)
+- [Spriters Ressource](https://spriters-resource.com/) (for various resources)
