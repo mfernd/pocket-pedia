@@ -7,12 +7,10 @@ import { setupTranslator } from '@/services/translator';
 import 'normalize.css';
 import './assets/main.css';
 
-await setupTranslator();
+setupTranslator().then(() => {
+  registerServiceWorker();
 
-registerServiceWorker();
-
-const app = createApp(App);
-
-app.use(router);
-
-app.mount('#app');
+  const app = createApp(App);
+  app.use(router);
+  app.mount('#app');
+});
