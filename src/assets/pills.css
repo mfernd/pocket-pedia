@@ -1,115 +1,229 @@
 .pills {
   display: flex;
   flex-flow: row wrap;
-  gap: 1rem;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
 }
 
 .pill {
-  min-width: 80px;
+  position: relative;
   max-width: 200px;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 400;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   text-transform: capitalize;
-  text-align: center;
+  text-align: left;
   border-radius: 3px;
-  padding: 0.3rem;
   line-height: 100%;
   background-color: #4b4b4b;
   color: #fff;
+  padding: 0.5rem 0.27rem;
+  padding-left: 28px;
 }
 
+.pill::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  height: 100%;
+  width: 23px;
+}
+
+/* NORMAL */
 .pill.background-color-normal {
-  background-color: #a4acaf;
-  color: #212121;
+  background-color: #9099a1;
+  color: #fff;
 }
 
+.pill.background-color-normal::before {
+  background: url('/images/types/normal.png') no-repeat center;
+  background-size: contain;
+}
+
+/* FIGHTING */
 .pill.background-color-fighting {
-  background-color: #d56723;
+  background-color: #ce4069;
   color: #fff;
 }
 
+.pill.background-color-fighting::before {
+  background: url('/images/types/fighting.png') no-repeat center;
+  background-size: contain;
+}
+
+/* FLYING */
 .pill.background-color-flying {
-  background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
-  background-color: #3dc7ef;
-  color: #212121;
+  background-color: #8fa8dd;
+  color: #fff;
 }
 
+.pill.background-color-flying::before {
+  background: url('/images/types/flying.png') no-repeat center;
+  background-size: contain;
+}
+
+/* POISON */
 .pill.background-color-poison {
-  background-color: #b97fc9;
+  background-color: #ab6ac8;
   color: #fff;
 }
 
+.pill.background-color-poison::before {
+  background: url('/images/types/poison.png') no-repeat center;
+  background-size: contain;
+}
+
+/* GROUND */
 .pill.background-color-ground {
-  background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
-  background-color: #f7de3f;
-  color: #212121;
+  background-color: #d97746;
+  color: #fff;
 }
 
+.pill.background-color-ground::before {
+  background: url('/images/types/ground.png') no-repeat center;
+  background-size: contain;
+}
+
+/* ROCK */
 .pill.background-color-rock {
-  background-color: #a38c21;
+  background-color: #c7b78b;
   color: #fff;
 }
 
+.pill.background-color-rock::before {
+  background: url('/images/types/rock.png') no-repeat center;
+  background-size: contain;
+}
+
+/* BUG */
 .pill.background-color-bug {
-  background-color: #729f3f;
+  background-color: #90c12c;
   color: #fff;
 }
 
+.pill.background-color-bug::before {
+  background: url('/images/types/bug.png') no-repeat center;
+  background-size: contain;
+}
+
+/* GHOST */
 .pill.background-color-ghost {
-  background-color: #7b62a3;
+  background-color: #5269ac;
   color: #fff;
 }
 
+.pill.background-color-ghost::before {
+  background: url('/images/types/ghost.png') no-repeat center;
+  background-size: contain;
+}
+
+/* STEEL */
 .pill.background-color-steel {
-  background-color: #9eb7b8;
-  color: #212121;
+  background-color: #5a8ea1;
+  color: #fff;
 }
 
+.pill.background-color-steel::before {
+  background: url('/images/types/steel.png') no-repeat center;
+  background-size: contain;
+}
+
+/* FIRE */
 .pill.background-color-fire {
-  background-color: #fd7d24;
+  background-color: #ff9c54;
   color: #fff;
 }
 
+.pill.background-color-fire::before {
+  background: url('/images/types/fire.png') no-repeat center;
+  background-size: contain;
+}
+
+/* WATER */
 .pill.background-color-water {
-  background-color: #4592c4;
+  background-color: #4d90d5;
   color: #fff;
 }
 
+.pill.background-color-water::before {
+  background: url('/images/types/water.png') no-repeat center;
+  background-size: contain;
+}
+
+/* GRASS */
 .pill.background-color-grass {
-  background-color: #9bcc50;
-  color: #212121;
+  background-color: #63bb5b;
+  color: #fff;
 }
 
+.pill.background-color-grass::before {
+  background: url('/images/types/grass.png') no-repeat center;
+  background-size: contain;
+}
+
+/* ELECTRIC */
 .pill.background-color-electric {
-  background-color: #eed535;
-  color: #212121;
+  background-color: #f3d23b;
+  color: #fff;
 }
 
+.pill.background-color-electric::before {
+  background: url('/images/types/electric.png') no-repeat center;
+  background-size: contain;
+}
+
+/* PSYCHIC */
 .pill.background-color-psychic {
-  background-color: #f366b9;
+  background-color: #f97176;
   color: #fff;
 }
 
+.pill.background-color-psychic::before {
+  background: url('/images/types/psychic.png') no-repeat center;
+  background-size: contain;
+}
+
+/* ICE */
 .pill.background-color-ice {
-  background-color: #53cef3;
-  color: #212121;
+  background-color: #74cec0;
+  color: #fff;
 }
 
+.pill.background-color-ice::before {
+  background: url('/images/types/ice.png') no-repeat center;
+  background-size: contain;
+}
+
+/* DRAGON */
 .pill.background-color-dragon {
-  background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
-  background-color: #53a4cf;
+  background-color: #0a6dc4;
   color: #fff;
 }
 
+.pill.background-color-dragon::before {
+  background: url('/images/types/dragon.png') no-repeat center;
+  background-size: contain;
+}
+
+/* DARK */
 .pill.background-color-dark {
-  background-color: #707070;
+  background-color: #5a5366;
   color: #fff;
 }
 
+.pill.background-color-dark::before {
+  background: url('/images/types/dark.png') no-repeat center;
+  background-size: contain;
+}
+
+/* FAIRY */
 .pill.background-color-fairy {
-  background-color: #fdb9e9;
-  color: #212121;
+  background-color: #ec8fe6;
+  color: #fff;
+}
+
+.pill.background-color-fairy::before {
+  background: url('/images/types/fairy.png') no-repeat center;
+  background-size: contain;
 }

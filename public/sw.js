@@ -3,6 +3,27 @@ const URL_TO_CACHE = [
   // 'https://raw.githubusercontent.com/PokeAPI/sprites/',
 ];
 
+const TYPES = [
+  '/images/types/bug.png',
+  '/images/types/dark.png',
+  '/images/types/dragon.png',
+  '/images/types/electric.png',
+  '/images/types/fairy.png',
+  '/images/types/fighting.png',
+  '/images/types/fire.png',
+  '/images/types/flying.png',
+  '/images/types/ghost.png',
+  '/images/types/grass.png',
+  '/images/types/ground.png',
+  '/images/types/ice.png',
+  '/images/types/normal.png',
+  '/images/types/poison.png',
+  '/images/types/psychic.png',
+  '/images/types/rock.png',
+  '/images/types/steel.png',
+  '/images/types/water.png',
+];
+
 const CACHE_NAME = 'pocket-pedia-v1';
 
 const addRessourcesToCache = async () => {
@@ -19,6 +40,8 @@ const addRessourcesToCache = async () => {
     '/images/translation.svg',
   ]);
 
+  await cache.addAll(TYPES);
+
   return cache;
 };
 
@@ -27,7 +50,7 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  cacheFirst(event.request).then();
+  event.respondWith(cacheFirst(event.request));
 });
 
 const cacheFirst = async (request) => {
