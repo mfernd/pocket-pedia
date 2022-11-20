@@ -5,16 +5,23 @@ import { getEvolutionChain } from '@/services/pokeapi/getEvolutionChain';
 const props = defineProps(['evolutionId']);
 
 const evolutionChain = ref([]);
+const hasEvolutions = ref(true);
 
 onBeforeMount(async () => {
   evolutionChain.value = await getEvolutionChain(props.evolutionId);
+  if (evolutionChain.value.length <= 1) {
+    hasEvolutions.value = false;
+  }
 });
 </script>
 
 <template>
   <article class="pokemon-evolutions">
-    <h1>{{ tr.messages.pokDetails.evolutions }}</h1>
-    <ul>
+    <h1>
+      {{ tr.messages.pokDetails.evolutions }}
+      <span v-if="!hasEvolutions">❌</span>
+    </h1>
+    <ul v-if="hasEvolutions">
       <li
         v-for="pokemon in evolutionChain"
         :key="pokemon.id"
@@ -37,9 +44,14 @@ onBeforeMount(async () => {
 </template>
 
 <style>
+.pokemon-evolutions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .pokemon-evolutions h1 {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem !important;
 }
 
 .pokemon-evolutions ul {

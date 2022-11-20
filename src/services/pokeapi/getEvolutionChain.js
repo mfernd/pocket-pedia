@@ -4,6 +4,8 @@ import * as Utils from '@/services/pokeapi/pokeapiUtils';
 const API_URL = 'https://pokeapi.co/api/v2';
 
 export const getEvolutionChain = async (id) => {
+  if (null === id) return [];
+
   const evolutionChain = await getEvolutionChainData(id);
   const evolutions = getEvolutions(evolutionChain.chain);
 
