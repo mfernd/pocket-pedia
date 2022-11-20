@@ -79,7 +79,7 @@ onBeforeMount(async () => {
               <span
                 v-for="ability in pokemon.abilities"
                 :key="ability"
-                class="pill"
+                class="pill pill-default"
               >
                 {{ ability }}
               </span>

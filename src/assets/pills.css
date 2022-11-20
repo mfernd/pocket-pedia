@@ -2,7 +2,8 @@
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0.75rem;
 }
 
 .pill {
@@ -28,6 +29,14 @@
   top: 0;
   height: 100%;
   width: 23px;
+}
+
+.pill.pill-default {
+  padding: 0.5rem !important;
+}
+
+.pill.pill-default::before {
+  content: none;
 }
 
 /* NORMAL */
