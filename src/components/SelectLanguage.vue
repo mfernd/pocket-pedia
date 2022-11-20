@@ -59,7 +59,7 @@ const handlerLang = (lang) => {
   box-shadow: var(--box-shadow);
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (min-width: 350px) and (max-width: 750px) {
   .lang-choices {
     left: unset;
     right: 0;

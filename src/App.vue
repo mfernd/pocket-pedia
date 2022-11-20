@@ -35,6 +35,7 @@ nav {
 }
 
 @media only screen and (max-width: 1280px) {
+  #app header,
   #app main {
     display: flex;
     flex-direction: column;
@@ -44,6 +45,7 @@ nav {
   nav {
     width: 100%;
     max-width: 752px;
+    justify-content: center;
   }
 }
 

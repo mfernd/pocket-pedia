@@ -107,21 +107,23 @@ h3 {
   margin-top: 0;
 }
 
+@media only screen and (max-width: 1280px) {
+  #pokemon-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #pokemon-details-header {
+    justify-content: center !important;
+  }
+}
+
 #pokemon-details {
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-
-@media only screen and (max-width: 1280px) {
-  header nav {
-    margin: 0 1rem;
-  }
-
-  #pokemon-details {
-    padding: 0 1rem;
-  }
 }
 
 #pokemon-details-header {
