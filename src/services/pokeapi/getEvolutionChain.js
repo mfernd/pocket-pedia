@@ -1,5 +1,5 @@
-import { getPokemonNames } from '@/services/translator';
 import * as Utils from '@/services/pokeapi/pokeapiUtils';
+import { getPokemonNames } from '@/services/translator';
 
 const API_URL = 'https://pokeapi.co/api/v2';
 
@@ -25,12 +25,12 @@ const getEvolutions = (chain) => {
 
   // Iterate through branches
   // (a pokemon has at most 2 more evolution)
-  for (const branch of chain['evolves_to']) {
+  for (const branch of chain.evolves_to) {
     res.push(extractPokemon(branch));
 
-    if (branch['evolves_to'].length <= 0) continue;
+    if (branch.evolves_to.length <= 0) continue;
 
-    for (const subBranch of branch['evolves_to']) {
+    for (const subBranch of branch.evolves_to) {
       res.push(extractPokemon(subBranch));
     }
   }

@@ -23,7 +23,7 @@
 }
 
 .pill::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 4px;
   top: 0;
@@ -46,7 +46,7 @@
 }
 
 .pill.background-color-normal::before {
-  background: url('/images/types/normal.png') no-repeat center;
+  background: url("/images/types/normal.png") no-repeat center;
   background-size: contain;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .pill.background-color-fighting::before {
-  background: url('/images/types/fighting.png') no-repeat center;
+  background: url("/images/types/fighting.png") no-repeat center;
   background-size: contain;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .pill.background-color-flying::before {
-  background: url('/images/types/flying.png') no-repeat center;
+  background: url("/images/types/flying.png") no-repeat center;
   background-size: contain;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .pill.background-color-poison::before {
-  background: url('/images/types/poison.png') no-repeat center;
+  background: url("/images/types/poison.png") no-repeat center;
   background-size: contain;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .pill.background-color-ground::before {
-  background: url('/images/types/ground.png') no-repeat center;
+  background: url("/images/types/ground.png") no-repeat center;
   background-size: contain;
 }
 
@@ -101,7 +101,7 @@
 }
 
 .pill.background-color-rock::before {
-  background: url('/images/types/rock.png') no-repeat center;
+  background: url("/images/types/rock.png") no-repeat center;
   background-size: contain;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .pill.background-color-bug::before {
-  background: url('/images/types/bug.png') no-repeat center;
+  background: url("/images/types/bug.png") no-repeat center;
   background-size: contain;
 }
 
@@ -123,7 +123,7 @@
 }
 
 .pill.background-color-ghost::before {
-  background: url('/images/types/ghost.png') no-repeat center;
+  background: url("/images/types/ghost.png") no-repeat center;
   background-size: contain;
 }
 
@@ -134,7 +134,7 @@
 }
 
 .pill.background-color-steel::before {
-  background: url('/images/types/steel.png') no-repeat center;
+  background: url("/images/types/steel.png") no-repeat center;
   background-size: contain;
 }
 
@@ -145,7 +145,7 @@
 }
 
 .pill.background-color-fire::before {
-  background: url('/images/types/fire.png') no-repeat center;
+  background: url("/images/types/fire.png") no-repeat center;
   background-size: contain;
 }
 
@@ -156,7 +156,7 @@
 }
 
 .pill.background-color-water::before {
-  background: url('/images/types/water.png') no-repeat center;
+  background: url("/images/types/water.png") no-repeat center;
   background-size: contain;
 }
 
@@ -167,7 +167,7 @@
 }
 
 .pill.background-color-grass::before {
-  background: url('/images/types/grass.png') no-repeat center;
+  background: url("/images/types/grass.png") no-repeat center;
   background-size: contain;
 }
 
@@ -178,7 +178,7 @@
 }
 
 .pill.background-color-electric::before {
-  background: url('/images/types/electric.png') no-repeat center;
+  background: url("/images/types/electric.png") no-repeat center;
   background-size: contain;
 }
 
@@ -189,7 +189,7 @@
 }
 
 .pill.background-color-psychic::before {
-  background: url('/images/types/psychic.png') no-repeat center;
+  background: url("/images/types/psychic.png") no-repeat center;
   background-size: contain;
 }
 
@@ -200,7 +200,7 @@
 }
 
 .pill.background-color-ice::before {
-  background: url('/images/types/ice.png') no-repeat center;
+  background: url("/images/types/ice.png") no-repeat center;
   background-size: contain;
 }
 
@@ -211,7 +211,7 @@
 }
 
 .pill.background-color-dragon::before {
-  background: url('/images/types/dragon.png') no-repeat center;
+  background: url("/images/types/dragon.png") no-repeat center;
   background-size: contain;
 }
 
@@ -222,7 +222,7 @@
 }
 
 .pill.background-color-dark::before {
-  background: url('/images/types/dark.png') no-repeat center;
+  background: url("/images/types/dark.png") no-repeat center;
   background-size: contain;
 }
 
@@ -233,6 +233,6 @@
 }
 
 .pill.background-color-fairy::before {
-  background: url('/images/types/fairy.png') no-repeat center;
+  background: url("/images/types/fairy.png") no-repeat center;
   background-size: contain;
 }

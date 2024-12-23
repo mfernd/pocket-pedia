@@ -1,7 +1,7 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
-import { tr } from '@/services/translator';
 import { getEvolutionChain } from '@/services/pokeapi/getEvolutionChain';
+import { tr } from '@/services/translator';
+import { onBeforeMount, ref } from 'vue';
 const props = defineProps(['evolutionId']);
 
 const evolutionChain = ref([]);

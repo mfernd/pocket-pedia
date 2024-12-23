@@ -1,5 +1,5 @@
 export const registerServiceWorker = async () => {
-  if (navigator && navigator.serviceWorker) {
+  if (navigator?.serviceWorker) {
     try {
       navigator.serviceWorker.register('/sw.js');
     } catch (error) {

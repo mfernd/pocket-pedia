@@ -1,13 +1,13 @@
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { tr } from '@/services/translator';
 import {
   Chart,
-  RadarController,
+  Filler,
   LineElement,
   PointElement,
+  RadarController,
   RadialLinearScale,
-  Filler,
 } from 'chart.js';
-import { tr } from '@/services/translator';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 Chart.register(
   RadarController,
@@ -15,7 +15,7 @@ Chart.register(
   PointElement,
   RadialLinearScale,
   Filler,
-  ChartDataLabels
+  ChartDataLabels,
 );
 
 const FONT_SIZE = 18;

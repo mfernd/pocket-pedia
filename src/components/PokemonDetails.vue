@@ -1,12 +1,12 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import * as Utils from '@/services/pokeapi/pokeapiUtils';
+import PokemonEvolution from '@/components/PokemonEvolution.vue';
+import PokemonSprites from '@/components/PokemonSprites.vue';
 import { getDetails } from '@/services/pokeapi/getInfo';
+import * as Utils from '@/services/pokeapi/pokeapiUtils';
 import { createStatsChart } from '@/services/radarChart';
 import { tr } from '@/services/translator';
-import PokemonSprites from '@/components/PokemonSprites.vue';
-import PokemonEvolution from '@/components/PokemonEvolution.vue';
+import { onBeforeMount, ref } from 'vue';
+import { useRoute } from 'vue-router';
 
 const pokemon = ref({
   id: 0,
