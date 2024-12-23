@@ -13,16 +13,16 @@ export const getDetails = async (id) => {
     currentLang = 'ja';
   }
 
-  let description = pokSpecies['flavor_text_entries'].find(
-    (el) => el.language.name === currentLang
+  let description = pokSpecies.flavor_text_entries.find(
+    (el) => el.language.name === currentLang,
   );
   if (!description) {
-    description = pokSpecies['flavor_text_entries'].find(
-      (el) => el.language.name === 'en'
+    description = pokSpecies.flavor_text_entries.find(
+      (el) => el.language.name === 'en',
     );
   }
 
-  let evolutionChainId = pokSpecies['evolution_chain'];
+  let evolutionChainId = pokSpecies.evolution_chain;
   if (null !== evolutionChainId) {
     evolutionChainId = evolutionChainId.url.split('/')[6];
   }
@@ -32,7 +32,7 @@ export const getDetails = async (id) => {
 
     name: pokSpecies.names.find((el) => el.language.name === currentLang).name,
 
-    description: description['flavor_text'],
+    description: description.flavor_text,
 
     sprites: {
       animated: Utils.getAnimatedUrls(pok.id),
@@ -43,7 +43,7 @@ export const getDetails = async (id) => {
     category: pokSpecies.genera.find((el) => el.language.name === currentLang)
       .genus,
 
-    stats: pok.stats.map((el) => el['base_stat']),
+    stats: pok.stats.map((el) => el.base_stat),
 
     moves: pok.moves.map((el) => el.move.name),
 
@@ -58,9 +58,9 @@ export const getDetails = async (id) => {
 
     weight: Number(pok.weight) / 10,
 
-    isLegendary: pokSpecies['is_legendary'],
+    isLegendary: pokSpecies.is_legendary,
 
-    isMythical: pokSpecies['is_mythical'],
+    isMythical: pokSpecies.is_mythical,
 
     evolutionChainId: Number(evolutionChainId),
   };

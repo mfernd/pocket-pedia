@@ -4,7 +4,7 @@ import { onMounted } from 'vue';
 
 onMounted(() => {
   const activeLang = document.querySelector(
-    `.lang-choices span[data-lang=${getCurrentLang()}]`
+    `.lang-choices span[data-lang=${getCurrentLang()}]`,
   );
   activeLang.classList.add('active');
 });

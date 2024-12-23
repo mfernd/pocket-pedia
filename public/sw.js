@@ -4,24 +4,24 @@ const URL_TO_CACHE = [
 ];
 
 const TYPES = [
-  '/images/types/bug.png',
-  '/images/types/dark.png',
-  '/images/types/dragon.png',
-  '/images/types/electric.png',
-  '/images/types/fairy.png',
-  '/images/types/fighting.png',
-  '/images/types/fire.png',
-  '/images/types/flying.png',
-  '/images/types/ghost.png',
-  '/images/types/grass.png',
-  '/images/types/ground.png',
-  '/images/types/ice.png',
-  '/images/types/normal.png',
-  '/images/types/poison.png',
-  '/images/types/psychic.png',
-  '/images/types/rock.png',
-  '/images/types/steel.png',
-  '/images/types/water.png',
+  './images/types/bug.png',
+  './images/types/dark.png',
+  './images/types/dragon.png',
+  './images/types/electric.png',
+  './images/types/fairy.png',
+  './images/types/fighting.png',
+  './images/types/fire.png',
+  './images/types/flying.png',
+  './images/types/ghost.png',
+  './images/types/grass.png',
+  './images/types/ground.png',
+  './images/types/ice.png',
+  './images/types/normal.png',
+  './images/types/poison.png',
+  './images/types/psychic.png',
+  './images/types/rock.png',
+  './images/types/steel.png',
+  './images/types/water.png',
 ];
 
 const CACHE_NAME = 'pocket-pedia-v1';
@@ -30,14 +30,14 @@ const addRessourcesToCache = async () => {
   const cache = await caches.open(CACHE_NAME);
 
   await cache.addAll([
-    '/translations/en.json',
-    '/translations/fr.json',
-    '/translations/jp.json',
-    '/images/battle_base1.png',
-    '/images/field.png',
-    '/images/loading.gif',
-    '/images/logo.png',
-    '/images/translation.svg',
+    './translations/en.json',
+    './translations/fr.json',
+    './translations/jp.json',
+    './images/battle_base1.png',
+    './images/field.png',
+    './images/loading.gif',
+    './images/logo.png',
+    './images/translation.svg',
   ]);
 
   await cache.addAll(TYPES);

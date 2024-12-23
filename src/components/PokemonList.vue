@@ -1,9 +1,9 @@
 <script setup>
-import { onBeforeMount, ref, watch } from 'vue';
-import SearchBar from '@/components/SearchBar.vue';
 import PokemonCard from '@/components/PokemonCard.vue';
-import { getList, filterPokemonsByQuery } from '@/services/pokeapi/getList';
+import SearchBar from '@/components/SearchBar.vue';
+import { filterPokemonsByQuery, getList } from '@/services/pokeapi/getList';
 import { tr } from '@/services/translator';
+import { onBeforeMount, ref, watch } from 'vue';
 
 let pokemonsData = [];
 let nbOfPokemon = 20;
@@ -32,7 +32,7 @@ onBeforeMount(async () => {
       const filtered = filterPokemonsByQuery(pokemonsData, pokemonQuery.value);
       pokemonsRendered.value = filtered.slice(0, nbOfPokemon);
     },
-    { threshold: 1.0 }
+    { threshold: 1.0 },
   );
   observer.observe(bottomOfList.value);
 });

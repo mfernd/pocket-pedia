@@ -1,5 +1,6 @@
 const KEY_NAME = 'currentLang';
 const LANGS = ['fr', 'en', 'jp'];
+const BASE_URL = import.meta.env.BASE_URL;
 
 export let tr = null;
 
@@ -22,7 +23,9 @@ export const changeLanguage = async (lang) => {
 
 const getTranslations = async () => {
   const currentLang = localStorage.getItem(KEY_NAME) ?? LANGS[0];
-  const respTranslations = await fetch(`/translations/${currentLang}.json`);
+  const respTranslations = await fetch(
+    `${BASE_URL}/translations/${currentLang}.json`,
+  );
   return respTranslations.json();
 };
 
